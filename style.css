@@ -73,12 +73,7 @@
 
 .books {
   display: grid;
-}
-
-.image-wrapper {
-  position: relative;
-  grid-column: span 2;
-  width: min-content;
+  padding: 1rem;
 }
 
 .book-icon {
@@ -89,10 +84,22 @@
   display: grid;
 }
 
+.title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
 /* CARD LAYOUT */
 
-.books.card-layout {
-  padding: 1rem;
+.card-layout .image-wrapper {
+  position: relative;
+  grid-column: span 2;
+  width: min-content;
+}
+
+.card-layout {
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min-content, 200px));
   grid-auto-rows: min-content;
@@ -123,10 +130,6 @@
 }
 
 .card-layout .title {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
   text-align: center;
 }
 
@@ -140,3 +143,40 @@
 }
 
 /* LINE LAYOUT */
+
+.line-layout {
+  grid-template-rows: repeat(auto-fill, 4rem);
+  gap: 10px;
+}
+
+.line-layout .card {
+  grid-template-columns: 50px 5fr 2fr 1fr 1fr;
+  padding: 0.5rem;
+  justify-items: end;
+  align-items: center;
+}
+
+.line-layout .image-wrapper {
+  position: relative;
+}
+
+.line-layout .image {
+  width: 50px;
+  height: 50px;
+}
+
+.line-layout .image-done {
+  position: absolute;
+  left: 0;
+  top: 2px;
+  scale: 0.9;
+  fill: color-mix(in lch, var(--primary), var(--accent));
+}
+
+.line-layout .image-done:not(.hidden) + .book-icon {
+  opacity: 0;
+}
+
+.line-layout .title {
+  justify-self: start;
+}
