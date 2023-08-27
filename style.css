@@ -15,7 +15,7 @@
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 .bg {
@@ -72,61 +72,66 @@
 }
 
 .books {
-    display: grid;
-    padding: 1rem;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fill, minmax(min-content, 200px));
-    grid-auto-rows: min-content;
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 200px));
+  grid-auto-rows: min-content;
 }
 
-/* PLACEHOLDERS */
 .image-wrapper {
-    position: relative;
-    grid-column: span 2;
-    width: min-content;
-}
-
-.image {
-    height: 150px;
-    width: 150px;
-    margin-block: 5px 10px;
+  position: relative;
+  grid-column: span 2;
+  width: min-content;
 }
 
 .book-icon {
-    fill: color-mix(in lch, var(--primary), var(--accent));
+  fill: color-mix(in lch, var(--primary), var(--accent));
 }
 
 .card {
-    display: grid;
-    grid-template: repeat(4, min-content) / repeat(2, 1fr);
-    justify-items: center;
-    gap: 2px;
-    padding: 0.5rem;
+  display: grid;
 }
 
-.card > p,
-.image {
-    grid-column: 1/3;
+/* CARD LAYOUT */
+
+.card-layout .image {
+  height: 150px;
+  width: 150px;
+  margin-block: 5px 10px;
 }
 
-.card > .pages,
-.card > .progress {
-    grid-column: auto;
+.card-layout .card {
+  grid-template: repeat(4, min-content) / repeat(2, 1fr);
+  justify-items: center;
+  gap: 2px;
+  padding: 0.5rem;
 }
 
-.card > .title {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-    overflow: hidden;
-    text-align: center;
+.card-layout .image,
+.card-layout .title,
+.card-layout .title {
+  grid-column: 1/3;
 }
 
-.image-done {
-    position: absolute;
-    left: 10px;
-    top: 10px;
-    z-index: 1;
-    scale: 0.8;
-    fill: var(--background);
+.card-layout .pages,
+.card-layout .progress {
+  grid-column: auto;
+}
+
+.card-layout .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-align: center;
+}
+
+.card-layout .image-done {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 1;
+  scale: 0.8;
+  fill: var(--background);
 }
