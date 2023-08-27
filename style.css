@@ -1,3 +1,5 @@
+@import url(https://fonts.bunny.net/css?family=libre-baskerville:400,400i,700);
+
 * {
   margin: 0;
   padding: 0;
@@ -28,10 +30,23 @@
   background-color: var(--accent);
 }
 
+.italic {
+    font-style: italic
+}
+
+.fw-normal {
+    font-weight: 400;
+}
+
+.fw-bold {
+    font-weight: 700;
+}
+
 .container {
   display: grid;
   grid-template: max(5%, 50px) 1fr / 4fr 1fr;
   height: 100vh;
+  font-family: libre-baskerville;
 }
 
 .header {
