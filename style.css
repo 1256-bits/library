@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text: #090707;
+  --background: #eee9e8;
+  --primary: #562e20;
+  --secondary: #e1d9d6;
+  --accent: #876d64;
+}
+
+.bg {
+  background-color: var(--background);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+}
+
+.bg-secondary {
+  background-color: var(--secondary);
+}
+
+.bg-accent {
+  background-color: var(--accent);
+}
+
+.container {
+  display: grid;
+  grid-template: max(5%, 50px) 1fr / 4fr 1fr;
+  height: 100vh;
+}
+
+.header {
+  grid-column: 1/3;
+}
