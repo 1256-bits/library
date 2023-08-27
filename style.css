@@ -73,10 +73,6 @@
 
 .books {
   display: grid;
-  padding: 1rem;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(min-content, 200px));
-  grid-auto-rows: min-content;
 }
 
 .image-wrapper {
@@ -95,6 +91,13 @@
 
 /* CARD LAYOUT */
 
+.books.card-layout {
+  padding: 1rem;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min-content, 200px));
+  grid-auto-rows: min-content;
+}
+
 .card-layout .image {
   height: 150px;
   width: 150px;
@@ -110,7 +113,7 @@
 
 .card-layout .image,
 .card-layout .title,
-.card-layout .title {
+.card-layout .author {
   grid-column: 1/3;
 }
 
@@ -135,3 +138,5 @@
   scale: 0.8;
   fill: var(--background);
 }
+
+/* LINE LAYOUT */
