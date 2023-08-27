@@ -92,6 +92,24 @@
   overflow: hidden;
 }
 
+.add-book {
+    border: 2px dashed var(--accent);
+    display: grid;
+    place-items: center;
+}
+
+.add-icon {
+    fill: var(--accent);
+}
+
+.add-book:hover {
+    background-color: var(--secondary);
+}
+
+.add-book:hover .add-icon {
+    fill: var(--primary);
+}
+
 /* CARD LAYOUT */
 
 .card-layout .image-wrapper {
