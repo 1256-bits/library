@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Libre Baskerville;
+  color: var(--text);
+}
+
 :root {
   --text: #090707;
   --background: #eee9e8;
@@ -50,8 +55,6 @@
   display: grid;
   grid-template: 3.2rem 1fr / 4fr 1fr;
   min-height: 100vh;
-  font-family: Libre Baskerville;
-  color: var(--text);
 }
 
 .header {
@@ -93,21 +96,21 @@
 }
 
 .add-book {
-    border: 2px dashed var(--accent);
-    display: grid;
-    place-items: center;
+  border: 2px dashed var(--accent);
+  display: grid;
+  place-items: center;
 }
 
 .add-icon {
-    fill: var(--accent);
+  fill: var(--accent);
 }
 
 .add-book:hover {
-    background-color: var(--secondary);
+  background-color: var(--secondary);
 }
 
 .add-book:hover .add-icon {
-    fill: var(--primary);
+  fill: var(--primary);
 }
 
 /* CARD LAYOUT */
@@ -198,4 +201,70 @@
 
 .line-layout .title {
   justify-self: start;
+}
+
+/* DIALOG */
+
+dialog {
+  margin: auto;
+  padding: 1rem;
+  border: solid 2px var(--primary);
+  background-color: var(--secondary);
+}
+
+.form-control {
+  appearance: none;
+  background-color: var(--background);
+  border-radius: 1em;
+  font-size: 1.2rem;
+  border: 1px solid var(--accent);
+}
+
+input.form-control {
+  padding: 5px 10px;
+}
+
+textarea.form-control {
+  padding: 10px;
+}
+
+dialog ul {
+  display: grid;
+  gap: 10px;
+}
+
+dialog li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.form-control:focus {
+  outline: 2px solid var(--accent);
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.button-container button {
+  appearance: none;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--accent);
+  border-radius: 1rem;
+  background-color: var(--background);
+}
+
+.button-container button:hover {
+  background-color: var(--accent);
+  border-color: var(--primary);
+  color: var(--background);
+}
+
+.button-container button:active {
+  background-color: var(--background);
+  color: inherit;
 }
