@@ -1,5 +1,8 @@
 const books = [];
 populateShelf();
+const dialog = document.querySelector("dialog");
+const closeBtn = document.getElementById("cancel");
+const form = document.querySelector("dialog > form");
 
 function Book(name, author, description, pageCount) {
     this.name = name;
@@ -10,9 +13,15 @@ function Book(name, author, description, pageCount) {
     this.description = description;
 }
 
-const dialog = document.querySelector("dialog");
-const closeBtn = document.getElementById("cancel");
-const form = document.querySelector("dialog > form");
+function showInfo(e) {
+    const index = e.target.dataset.index;
+    const sideBar = document.querySelector(".sidebar");
+    const infoBox = document.createElement("div");
+    infoBox.classList.add("info-box");
+    infoBox.innerHTML = `<p>Title: ${books[index].name}</p>
+    <p>Author: ${books[index].author}</p>`;
+    sideBar.appendChild(infoBox);
+}
 
 closeBtn.addEventListener("click", () => dialog.close());
 
@@ -31,7 +40,7 @@ function populateShelf() {
     shelf.innerHTML = "";
     books.forEach((book, index) => {
         const bookCardTemplate = `
-       <div class="image-wrapper" data-index="${index}">
+       <div class="image-wrapper" >
          <svg class="image image-done hidden">
            <use class="image image-done" href="./done.svg#done"></use>
          </svg>
@@ -49,6 +58,9 @@ function populateShelf() {
         const bookCard = document.createElement("div");
         bookCard.classList.add("card", "bg-secondary");
         bookCard.innerHTML = bookCardTemplate;
+        //bookCard.setAttribute("tabindex", "0");
+        bookCard.setAttribute("data-index", index);
+        bookCard.addEventListener("click", showInfo);
         shelf.appendChild(bookCard);
     });
     const addBookCardTemplate = `
