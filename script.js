@@ -13,8 +13,8 @@ function Book(name, author, description, pageCount) {
     this.description = description;
 }
 
-function showInfo(e) {
-    const index = e.target.dataset.index;
+function showInfo() {
+    const index = this.dataset.index;
     const sideBar = document.querySelector(".sidebar");
     const infoBox = document.createElement("div");
     infoBox.classList.add("info-box");
