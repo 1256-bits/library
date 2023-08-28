@@ -16,11 +16,9 @@ function Book(name, author, description, pageCount) {
 function showInfo() {
     const index = this.dataset.index;
     const sideBar = document.querySelector(".sidebar");
-    const infoBox = document.createElement("div");
-    infoBox.classList.add("info-box");
+    const infoBox = document.querySelector(".info-wrapper");
     infoBox.innerHTML = `<p>Title: ${books[index].name}</p>
     <p>Author: ${books[index].author}</p>`;
-    sideBar.appendChild(infoBox);
 }
 
 closeBtn.addEventListener("click", () => dialog.close());
