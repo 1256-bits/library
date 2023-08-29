@@ -374,3 +374,7 @@ li.column {
 .change-layout:active {
   box-shadow: 0px 0px 20px 10px var(--primary);
 }
+
+.sidebar-button.button-confirm {
+    margin-block: 0.2rem;
+}
