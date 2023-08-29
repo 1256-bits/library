@@ -17,10 +17,21 @@ function Book(name, author, description, pageCount) {
     this.description = description;
 }
 
+Book.prototype.updateValues = function (data) {
+    this.name = data.get("name");
+    this.author = data.get("author");
+    this.pageCount = data.get("page-count");
+    this.pageRead = data.get("page-read");
+    //this.finished = data.get("");
+    this.description = data.get("description");
+}
+
 function showInfo(e) {
     const index = e.currentTarget.dataset.index;
     const infoBox = document.querySelector(".info-wrapper");
     infoBox.innerHTML = `
+    <form method="get">
+    <input type="hidden" name="index" value="${index}">
     <ul>
       <li>
         <label class="fw-bold" for="bar-name">Title:</label>
@@ -40,12 +51,19 @@ function showInfo(e) {
       </li>
       <li>
         <label class="fw-bold" for="bar-page-read" >Pages read:</label>
-        <input type="number" min="1" value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
+        <input type="number" min="0" value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
       </li>
-    <button class="sidebar-button button-confirm bg-secondary" type="button">Save changes</button>
-    <button class="sidebar-button button-cancel bg-secondary" type="button">Delete book</button>
-    </ul>`;
-    infoBox.setAttribute("data-index", index);
+    <button class="sidebar-button button-confirm bg-secondary" id="save-changes">Save changes</button>
+    <button class="sidebar-button button-cancel bg-secondary" type="button" id="delete-book">Delete book</button>
+    </ul>
+    <form>
+    `;
+    const saveChanges = document.querySelector(".info-wrapper form");
+    saveChanges.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const data = new FormData(e.target);
+        books[data.get("index")].updateValues(data); 
+    });
 }
 
 closeBtn.addEventListener("click", () => dialog.close());
