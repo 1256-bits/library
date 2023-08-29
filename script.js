@@ -1,7 +1,4 @@
 const books = [];
-books.push(
-    new Book("The best book", "A. Uthor", "The best book about stuff", "300"),
-);
 populateShelf();
 const dialog = document.querySelector("dialog");
 const closeBtn = document.getElementById("cancel");
