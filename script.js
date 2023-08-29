@@ -32,7 +32,7 @@ function showInfo(e) {
       </li>
       <li class="column">
         <label class="fw-bold" for="bar-description" >Description:</label>
-        <textarea value="${books[index].description}" name="description" id="bar-description" rows="10" ></textarea>
+        <textarea name="description" id="bar-description" rows="10" >${books[index].description}</textarea>
       </li>
       <li>
         <label class="fw-bold" for="bar-page-count" >Pages:</label>
