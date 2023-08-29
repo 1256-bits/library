@@ -6,9 +6,16 @@
   box-sizing: border-box;
 }
 
-body {
+body,
+input,
+textarea,
+button {
   font-family: Libre Baskerville;
   color: var(--text);
+}
+
+ul {
+  list-style: none;
 }
 
 :root {
@@ -209,12 +216,10 @@ dialog {
   margin: auto;
   padding: 1rem;
   border: solid 2px var(--primary);
-  background-color: var(--secondary);
 }
 
 .form-control {
   appearance: none;
-  background-color: var(--background);
   border-radius: 1em;
   font-size: 1.2rem;
   border: 1px solid var(--accent);
@@ -255,7 +260,6 @@ dialog li {
   font-size: 1.1rem;
   border: 2px solid var(--accent);
   border-radius: 1rem;
-  background-color: var(--background);
 }
 
 .button-container button:hover {
@@ -276,7 +280,7 @@ dialog {
 
 dialog:modal {
   scale: 1;
-  animation: .3s linear slide-in;
+  animation: 0.3s linear slide-in;
 }
 
 @keyframes slide-in {
@@ -287,3 +291,51 @@ dialog:modal {
     opacity: 1;
   }
 }
+
+/* SIDEBAR */
+
+.sidebar-content {
+  margin: 1rem;
+  display: grid;
+}
+
+.info-wrapper ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.info-wrapper li {
+  display: flex;
+  justify-content: space-between;
+}
+
+li.column {
+  flex-direction: column;
+}
+
+.info-wrapper input,
+.info-wrapper textarea {
+  background-color: var(--secondary);
+  border: 1px solid var(--primary);
+  padding: 0.2rem;
+  font-size: 1rem;
+}
+
+.info-wrapper textarea {
+  resize: vertical;
+}
+
+.sidebar-button {
+  padding: 1rem 2rem;
+  font-size: 1.3rem;
+  appearance: none;
+  border-radius: 2em;
+  background-color: var(--secondary);
+  box-shadow: 0px 4px 20px 0px var(--primary);
+  border: 2px solid var(--primary);
+  scale: 0.7;
+  transform: translateY(-1rem);
+}
+
+
