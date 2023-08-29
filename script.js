@@ -68,6 +68,7 @@ function showInfo(e) {
         e.preventDefault();
         const data = new FormData(e.target);
         books[data.get("index")].updateValues(data);
+        populateShelf();
     });
 }
 
