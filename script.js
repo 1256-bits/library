@@ -26,11 +26,11 @@ Book.prototype.updateValues = function(data) {
     this.pageRead = pageRead > pageCount ? pageCount : pageRead;
     this.description = data.get("description");
     if (data.get("finished") === "on" || this.pageRead === this.pageCount)
-        this.read(data.get("index"));
+        this.read();
     else this.finished = false;
 };
 
-Book.prototype.read = function(index) {
+Book.prototype.read = function() {
     this.finished = true;
     this.pageRead = this.pageCount;
 };
@@ -40,7 +40,7 @@ function showInfo(e) {
     const infoBox = document.querySelector(".info-wrapper");
     infoBox.innerHTML = `
     <form method="get">
-    <input type="hidden" name="index" value="${index}">
+    <input type="hidden" name="index" value="${index}" id="index-hidden">
     <ul>
       <li>
         <label class="fw-bold" for="bar-name">Title:</label>
@@ -74,11 +74,12 @@ function showInfo(e) {
       </li>
     <button class="sidebar-button button-confirm bg-secondary" id="save-changes">Save changes</button>
     <button class="sidebar-button button-cancel bg-secondary" type="button" id="delete-book">Delete book</button>
-    </ul>
+    </ul
     <form>
     `;
     const saveChanges = document.querySelector(".info-wrapper form");
     const pageRead = document.getElementById("bar-page-read");
+    const deleteBtn = document.getElementById("delete-book");
     saveChanges.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
@@ -89,6 +90,13 @@ function showInfo(e) {
     pageRead.addEventListener("blur", (e) => {
         const pageCount = document.getElementById("bar-page-count");
         if (e.target.value > pageCount.value) e.target.value = pageCount.value;
+    });
+    deleteBtn.addEventListener("click", () => {
+        const index = document.getElementById("index-hidden").value;
+        books.splice(index, 1);
+        populateShelf();
+        const sidebarForm = document.querySelector(".info-wrapper form");
+        sidebarForm.remove()
     });
 }
 
