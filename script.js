@@ -42,6 +42,8 @@ function showInfo(e) {
         <label class="fw-bold" for="bar-page-read" >Pages read:</label>
         <input type="number" min="1" value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
       </li>
+    <button class="sidebar-button button-confirm bg-secondary" type="button">Save changes</button>
+    <button class="sidebar-button button-cancel bg-secondary" type="button">Delete book</button>
     </ul>`;
 }
 
