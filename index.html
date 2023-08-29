@@ -16,13 +16,13 @@
       <div class="books line-layout bg"></div>
       <div class="sidebar bg-accent">
         <div class="sidebar-content">
-          <button class="change-layout">Change layout</button>
+          <button class="change-layout sidebar-button fw-bold">Change layout</button>
           <div class="info-wrapper"></div>
         </div>
       </div>
     </div>
 
-    <dialog>
+    <dialog class="bg-secondary">
       <form method="dialog">
         <ul>
           <li>
@@ -31,7 +31,7 @@
               type="text"
               id="book-name"
               name="book-name"
-              class="form-control"
+              class="form-control bg"
               required
             />
           </li>
@@ -41,7 +41,7 @@
               type="text"
               id="author"
               name="author"
-              class="form-control"
+              class="form-control bg"
               required
             />
           </li>
@@ -52,7 +52,7 @@
               id="description"
               cols="30"
               rows="10"
-              class="form-control"
+              class="form-control bg"
             ></textarea>
           </li>
           <li>
@@ -61,14 +61,14 @@
               type="number"
               name="page-count"
               id="page-count"
-              class="form-control"
+              class="form-control bg"
               min="1"
               required
             />
           </li>
           <li class="button-container">
-            <button id="submit" class="fw-bold">Submit</button>
-            <button id="cancel" type="reset" class="fw-bold">Cancel</button>
+            <button id="submit" class="fw-bold bg">Submit</button>
+            <button id="cancel" type="reset" class="fw-bold bg">Cancel</button>
           </li>
         </ul>
       </form>
