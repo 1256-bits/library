@@ -312,21 +312,24 @@ dialog:modal {
 .sidebar-content {
   margin: 1rem;
   display: grid;
+  gap: 1.5rem;
 }
 
 .info-wrapper ul {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 
 .info-wrapper li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 li.column {
   flex-direction: column;
+  align-items: stretch;
 }
 
 .info-wrapper input,
@@ -335,6 +338,11 @@ li.column {
   border: 1px solid var(--primary);
   padding: 0.2rem;
   font-size: 1rem;
+}
+
+.info-wrapper input:focus,
+.info-wrapper textarea:focus {
+  outline: solid 1px var(--secondary);
 }
 
 .info-wrapper textarea {
@@ -349,17 +357,15 @@ li.column {
 }
 
 .sidebar-button:hover {
-  box-shadow: 0px 4px 20px 10px var(--primary);
+  box-shadow: 0px 0px 20px 10px var(--primary);
 }
 
 .sidebar-button:active {
-  box-shadow: 0px 4px 20px 10px var(--primary);
-  transform: translateY(-0.9rem);
+  box-shadow: 0px 0px 20px 10px var(--primary);
+  transform: translateY(0.1rem);
 }
 
 .change-layout {
-  padding: 1rem 2rem;
-  font-size: 1.3rem;
-  scale: 0.7;
-  transform: translateY(-1rem);
+  padding: 0.8rem 1.3rem;
+  font-size: 1.1rem;
 }
