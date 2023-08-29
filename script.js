@@ -97,10 +97,17 @@ function populateShelf() {
     addBookCard.setAttribute("id", "new-book");
     addBookCard.classList.add("add-book");
     addBookCard.innerHTML = addBookCardTemplate;
+    addBookCard.setAttribute("tabindex", "0");
     shelf.appendChild(addBookCard);
     addBookCard.addEventListener("click", () => {
         dialog.showModal();
         form.reset();
+    });
+    addBookCard.addEventListener("keyup", (e) => {
+        if (e.code === "Space") {
+            dialog.showModal();
+            form.reset();
+        }
     });
 }
 
