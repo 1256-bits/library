@@ -28,15 +28,18 @@ Book.prototype.updateValues = function(data) {
     this.name = data.get("name");
     this.author = data.get("author");
     this.pageCount = pageCount;
-    this.pageRead = (pageRead > pageCount) ? pageCount : pageRead;
+    this.pageRead = pageRead > pageCount ? pageCount : pageRead;
     this.description = data.get("description");
     if (data.get("finished") === "on" || this.pageRead === this.pageCount)
-        this.read();
+        this.read(data.get("index"));
+    else
+        this.finished = false;
 };
 
-Book.prototype.read = function () {
-    return;
-}
+Book.prototype.read = function(index) {
+    this.finished = true;
+    this.pageRead = this.pageCount;
+};
 
 function showInfo(e) {
     const index = e.currentTarget.dataset.index;
@@ -52,7 +55,8 @@ function showInfo(e) {
       </li>
       <li>
         <label class="fw-bold" for="bar-author" >Author:</label>
-        <input value="${books[index].author}" name="author" id="bar-author" required />
+        <input value="${books[index].author
+        }" name="author" id="bar-author" required />
       </li>
       <li class="column">
         <label class="fw-bold" for="bar-description" >Description:</label>
@@ -107,7 +111,7 @@ function populateShelf() {
     books.forEach((book, index) => {
         const bookCardTemplate = `
        <div class="image-wrapper" >
-         <svg class="image image-done hidden">
+         <svg class="image image-done ${book.finished ? "" : "hidden"}">
            <use class="image image-done" href="./done.svg#done"></use>
          </svg>
          <svg class="image book-icon">
