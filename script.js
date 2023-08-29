@@ -1,3 +1,8 @@
+/*
+ TODO:
+ * Dynamically update maximum allowed value for the pages read based on the current (unsubmitted) page count
+ ** Make it snap back to the max on blur
+ */
 const books = [];
 books.push(
     new Book("The best book", "A. Uthor", "The best book about stuff", "300"),
@@ -17,14 +22,14 @@ function Book(name, author, description, pageCount) {
     this.description = description;
 }
 
-Book.prototype.updateValues = function (data) {
+Book.prototype.updateValues = function(data) {
     this.name = data.get("name");
     this.author = data.get("author");
-    this.pageCount = data.get("page-count");
-    this.pageRead = data.get("page-read");
+    this.pageCount = parseInt(data.get("page-count"));
+    this.pageRead = parseInt(data.get("page-read"));
     //this.finished = data.get("");
     this.description = data.get("description");
-}
+};
 
 function showInfo(e) {
     const index = e.currentTarget.dataset.index;
@@ -62,7 +67,7 @@ function showInfo(e) {
     saveChanges.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
-        books[data.get("index")].updateValues(data); 
+        books[data.get("index")].updateValues(data);
     });
 }
 
@@ -96,7 +101,9 @@ function populateShelf() {
        </p>
        <p class="author">${book.author}</p>
        <p class="pages">${book.pageRead}/${book.pageCount}</p>
-       <p class="progress">${(book.pageRead / book.pageCount) * 100}%</p>`;
+       <p class="progress">${Math.trunc(
+            (book.pageRead / book.pageCount) * 100,
+        )}%</p>`;
 
         const bookCard = document.createElement("div");
         bookCard.classList.add("card", "bg-secondary");
