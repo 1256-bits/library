@@ -89,6 +89,8 @@ function showInfo(e) {
         if (e.target.value > pageCount.value) e.target.value = pageCount.value;
     });
     deleteBtn.addEventListener("click", () => {
+        if (!confirm("Are you sure you want to delete this book?"))
+            return;
         const index = document.getElementById("index-hidden").value;
         books.splice(index, 1);
         populateShelf();
