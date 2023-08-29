@@ -24,6 +24,8 @@ ul {
   --primary: #562e20;
   --secondary: #e1d9d6;
   --accent: #876d64;
+  --red: #a92525;
+  --green: #317631;
 }
 
 .hidden {
@@ -118,6 +120,22 @@ ul {
 
 .add-book:hover .add-icon {
   fill: var(--primary);
+}
+
+.button-confirm {
+  color: var(--green);
+}
+
+.button-confirm:hover {
+  background-color: color-mix(in lch, var(--green) 25%, var(--secondary));
+}
+
+.button-cancel {
+  color: var(--red);
+}
+
+.button-cancel:hover {
+  background-color: color-mix(in lch, var(--red) 25%, var(--secondary));
 }
 
 /* CARD LAYOUT */
@@ -263,9 +281,7 @@ dialog li {
 }
 
 .button-container button:hover {
-  background-color: var(--accent);
   border-color: var(--primary);
-  color: var(--background);
 }
 
 .button-container button:active {
@@ -337,5 +353,3 @@ li.column {
   scale: 0.7;
   transform: translateY(-1rem);
 }
-
-
