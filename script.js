@@ -1,8 +1,3 @@
-/*
- TODO:
- * Dynamically update maximum allowed value for the pages read based on the current (unsubmitted) page count
- ** Make it snap back to the max on blur
- */
 const books = [];
 books.push(
     new Book("The best book", "A. Uthor", "The best book about stuff", "300"),
@@ -32,8 +27,7 @@ Book.prototype.updateValues = function(data) {
     this.description = data.get("description");
     if (data.get("finished") === "on" || this.pageRead === this.pageCount)
         this.read(data.get("index"));
-    else
-        this.finished = false;
+    else this.finished = false;
 };
 
 Book.prototype.read = function(index) {
@@ -84,12 +78,17 @@ function showInfo(e) {
     <form>
     `;
     const saveChanges = document.querySelector(".info-wrapper form");
+    const pageRead = document.getElementById("bar-page-read");
     saveChanges.addEventListener("submit", (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
         books[data.get("index")].updateValues(data);
         populateShelf();
         e.target.remove();
+    });
+    pageRead.addEventListener("blur", (e) => {
+        const pageCount = document.getElementById("bar-page-count");
+        if (e.target.value > pageCount.value) e.target.value = pageCount.value;
     });
 }
 
