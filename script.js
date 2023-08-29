@@ -35,11 +35,11 @@ function showInfo() {
       </li>
       <li>
         <label class="fw-bold" for="bar-page-count" >Pages:</label>
-        <input value="${books[index].pageCount}" name="page-count" id="bar-page-count" />
+        <input type="number" min="1" value="${books[index].pageCount}" name="page-count" id="bar-page-count" />
       </li>
       <li>
         <label class="fw-bold" for="bar-page-read" >Pages read:</label>
-        <input value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
+        <input type="number" min="1" value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
       </li>
     </ul>`;
 }
