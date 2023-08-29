@@ -6,6 +6,7 @@ populateShelf();
 const dialog = document.querySelector("dialog");
 const closeBtn = document.getElementById("cancel");
 const form = document.querySelector("dialog > form");
+const layoutBtn = document.getElementById("layout-button");
 
 function Book(name, author, description, pageCount) {
     this.name = name;
@@ -16,8 +17,8 @@ function Book(name, author, description, pageCount) {
     this.description = description;
 }
 
-function showInfo() {
-    const index = this.dataset.index;
+function showInfo(e) {
+    const index = e.currentTarget.dataset.index;
     const infoBox = document.querySelector(".info-wrapper");
     infoBox.innerHTML = `
     <ul>
@@ -79,9 +80,12 @@ function populateShelf() {
         const bookCard = document.createElement("div");
         bookCard.classList.add("card", "bg-secondary");
         bookCard.innerHTML = bookCardTemplate;
-        //bookCard.setAttribute("tabindex", "0");
+        bookCard.setAttribute("tabindex", "0");
         bookCard.setAttribute("data-index", index);
         bookCard.addEventListener("click", showInfo);
+        bookCard.addEventListener("keyup", (e) => {
+            if (e.code === "Space") showInfo(e);
+        });
         shelf.appendChild(bookCard);
     });
     const addBookCardTemplate = `
@@ -99,3 +103,9 @@ function populateShelf() {
         form.reset();
     });
 }
+
+layoutBtn.addEventListener("click", () => {
+    const shelf = document.querySelector(".books");
+    shelf.classList.toggle("line-layout");
+    shelf.classList.toggle("card-layout");
+});
