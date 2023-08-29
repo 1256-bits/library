@@ -23,13 +23,20 @@ function Book(name, author, description, pageCount) {
 }
 
 Book.prototype.updateValues = function(data) {
+    const pageRead = parseInt(data.get("page-read"));
+    const pageCount = parseInt(data.get("page-count"));
     this.name = data.get("name");
     this.author = data.get("author");
-    this.pageCount = parseInt(data.get("page-count"));
-    this.pageRead = parseInt(data.get("page-read"));
-    //this.finished = data.get("");
+    this.pageCount = pageCount;
+    this.pageRead = (pageRead > pageCount) ? pageCount : pageRead;
     this.description = data.get("description");
+    if (data.get("finished") === "on" || this.pageRead === this.pageCount)
+        this.read();
 };
+
+Book.prototype.read = function () {
+    return;
+}
 
 function showInfo(e) {
     const index = e.currentTarget.dataset.index;
@@ -40,7 +47,8 @@ function showInfo(e) {
     <ul>
       <li>
         <label class="fw-bold" for="bar-name">Title:</label>
-        <input type="text" value="${books[index].name}" name="name" id="bar-name" />
+        <input type="text" value="${books[index].name
+        }" name="name" id="bar-name" />
       </li>
       <li>
         <label class="fw-bold" for="bar-author" >Author:</label>
@@ -48,15 +56,23 @@ function showInfo(e) {
       </li>
       <li class="column">
         <label class="fw-bold" for="bar-description" >Description:</label>
-        <textarea name="description" id="bar-description" rows="10" >${books[index].description}</textarea>
+        <textarea name="description" id="bar-description" rows="10" >${books[index].description
+        }</textarea>
+      </li>
+      <li>
+        <label for="finished" class="fw-bold">Finised: </label>
+        <input type="checkbox" name="finished" id="finished" ${books[index].finished ? "checked" : ""
+        }>
       </li>
       <li>
         <label class="fw-bold" for="bar-page-count" >Pages:</label>
-        <input type="number" min="1" value="${books[index].pageCount}" name="page-count" id="bar-page-count" />
+        <input type="number" min="1" value="${books[index].pageCount
+        }" name="page-count" id="bar-page-count" />
       </li>
       <li>
         <label class="fw-bold" for="bar-page-read" >Pages read:</label>
-        <input type="number" min="0" value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
+        <input type="number" min="0" value="${books[index].pageRead
+        }" name="page-read" id="bar-page-read" />
       </li>
     <button class="sidebar-button button-confirm bg-secondary" id="save-changes">Save changes</button>
     <button class="sidebar-button button-cancel bg-secondary" type="button" id="delete-book">Delete book</button>
