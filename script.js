@@ -48,11 +48,11 @@ function showInfo(e) {
       <li>
         <label class="fw-bold" for="bar-name">Title:</label>
         <input type="text" value="${books[index].name
-        }" name="name" id="bar-name" />
+        }" name="name" id="bar-name" required />
       </li>
       <li>
         <label class="fw-bold" for="bar-author" >Author:</label>
-        <input value="${books[index].author}" name="author" id="bar-author" />
+        <input value="${books[index].author}" name="author" id="bar-author" required />
       </li>
       <li class="column">
         <label class="fw-bold" for="bar-description" >Description:</label>
@@ -67,12 +67,12 @@ function showInfo(e) {
       <li>
         <label class="fw-bold" for="bar-page-count" >Pages:</label>
         <input type="number" min="1" value="${books[index].pageCount
-        }" name="page-count" id="bar-page-count" />
+        }" name="page-count" id="bar-page-count" required />
       </li>
       <li>
         <label class="fw-bold" for="bar-page-read" >Pages read:</label>
         <input type="number" min="0" value="${books[index].pageRead
-        }" name="page-read" id="bar-page-read" />
+        }" name="page-read" id="bar-page-read" required />
       </li>
     <button class="sidebar-button button-confirm bg-secondary" id="save-changes">Save changes</button>
     <button class="sidebar-button button-cancel bg-secondary" type="button" id="delete-book">Delete book</button>
