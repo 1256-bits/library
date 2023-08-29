@@ -45,6 +45,7 @@ function showInfo(e) {
     <button class="sidebar-button button-confirm bg-secondary" type="button">Save changes</button>
     <button class="sidebar-button button-cancel bg-secondary" type="button">Delete book</button>
     </ul>`;
+    infoBox.setAttribute("data-index", index);
 }
 
 closeBtn.addEventListener("click", () => dialog.close());
