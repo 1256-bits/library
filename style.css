@@ -190,7 +190,7 @@ ul {
 }
 
 .card-layout .add-book {
-    height: 250px;
+  height: 250px;
 }
 
 /* LINE LAYOUT */
@@ -326,14 +326,16 @@ dialog:modal {
 }
 
 .info-wrapper li {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  justify-items: start;
   align-items: center;
+  gap: 0.5rem;
 }
 
 li.column {
-  flex-direction: column;
-  align-items: stretch;
+  grid-template-columns: 1fr;
+  justify-items: stretch;
 }
 
 .info-wrapper input,
@@ -380,5 +382,5 @@ li.column {
 }
 
 .sidebar-button.button-confirm {
-    margin-block: 0.2rem;
+  margin-block: 0.2rem;
 }
