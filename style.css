@@ -189,6 +189,10 @@ ul {
   fill: var(--background);
 }
 
+.card-layout .add-book {
+    height: 250px;
+}
+
 /* LINE LAYOUT */
 
 .line-layout {
