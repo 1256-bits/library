@@ -1,4 +1,7 @@
 const books = [];
+books.push(
+    new Book("The best book", "A. Uthor", "The best book about stuff", "300"),
+);
 populateShelf();
 const dialog = document.querySelector("dialog");
 const closeBtn = document.getElementById("cancel");
@@ -15,10 +18,30 @@ function Book(name, author, description, pageCount) {
 
 function showInfo() {
     const index = this.dataset.index;
-    const sideBar = document.querySelector(".sidebar");
     const infoBox = document.querySelector(".info-wrapper");
-    infoBox.innerHTML = `<p>Title: ${books[index].name}</p>
-    <p>Author: ${books[index].author}</p>`;
+    infoBox.innerHTML = `
+    <ul>
+      <li>
+        <label class="fw-bold" for="bar-name">Title:</label>
+        <input type="text" value="${books[index].name}" name="name" id="bar-name" />
+      </li>
+      <li>
+        <label class="fw-bold" for="bar-author" >Author:</label>
+        <input value="${books[index].author}" name="author" id="bar-author" />
+      </li>
+      <li class="column">
+        <label class="fw-bold" for="bar-description" >Description:</label>
+        <textarea value="${books[index].description}" name="description" id="bar-description" rows="10" ></textarea>
+      </li>
+      <li>
+        <label class="fw-bold" for="bar-page-count" >Pages:</label>
+        <input value="${books[index].pageCount}" name="page-count" id="bar-page-count" />
+      </li>
+      <li>
+        <label class="fw-bold" for="bar-page-read" >Pages read:</label>
+        <input value="${books[index].pageRead}" name="page-read" id="bar-page-read" />
+      </li>
+    </ul>`;
 }
 
 closeBtn.addEventListener("click", () => dialog.close());
