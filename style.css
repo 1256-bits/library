@@ -18,6 +18,12 @@ ul {
   list-style: none;
 }
 
+input[type="checkbox"] {
+  height: 1rem;
+  width: 1rem;
+  accent-color: var(--green);
+}
+
 :root {
   --text: #090707;
   --background: #eee9e8;
