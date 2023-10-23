@@ -298,13 +298,7 @@ dialog li {
   background-color: var(--background);
 }
 
-dialog {
-  display: block;
-  position: fixed;
-}
-
 dialog:modal {
-  scale: 1;
   animation: 0.3s linear slide-in;
 }
 
