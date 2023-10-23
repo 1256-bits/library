@@ -97,9 +97,9 @@ class uiController {
     deleteBtn.addEventListener("click", () => {
       if (!confirm("Are you sure you want to delete this book?")) return;
       const index = document.getElementById("index-hidden").value;
+      const sidebarForm = document.querySelector(".info-wrapper form");
       this.books.splice(index, 1);
       this.populateShelf();
-      const sidebarForm = document.querySelector(".info-wrapper form");
       sidebarForm.remove();
     });
   }
