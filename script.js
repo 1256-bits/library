@@ -8,7 +8,7 @@ class Book {
     this.description = description;
   }
 
-  updateValues = function (data) {
+  updateValues = function(data) {
     const pageRead = parseInt(data.get("page-read"));
     const pageCount = parseInt(data.get("page-count"));
     this.name = data.get("name");
@@ -21,7 +21,7 @@ class Book {
     else this.finished = false;
   };
 
-  read = function () {
+  read = function() {
     this.finished = true;
     this.pageRead = this.pageCount;
   };
@@ -41,39 +41,33 @@ class uiController {
     <ul>
       <li>
         <label class="fw-bold" for="bar-name">Title:</label>
-        <input type="text" value="${
-          books[index].name
-        }" name="name" id="bar-name" required />
+        <input type="text" value="${uiController.books[index].name
+      }" name="name" id="bar-name" required />
       </li>
       <li>
         <label class="fw-bold" for="bar-author" >Author:</label>
-        <input value="${
-          books[index].author
-        }" name="author" id="bar-author" required />
+        <input value="${uiController.books[index].author
+      }" name="author" id="bar-author" required />
       </li>
       <li class="column">
         <label class="fw-bold" for="bar-description" >Description:</label>
-        <textarea name="description" id="bar-description" rows="10" >${
-          books[index].description
-        }</textarea>
+        <textarea name="description" id="bar-description" rows="10" >${uiController.books[index].description
+      }</textarea>
       </li>
       <li>
         <label for="finished" class="fw-bold">Finised: </label>
-        <input type="checkbox" name="finished" id="finished" ${
-          books[index].finished ? "checked" : ""
-        }>
+        <input type="checkbox" name="finished" id="finished" ${uiController.books[index].finished ? "checked" : ""
+      }>
       </li>
       <li>
         <label class="fw-bold" for="bar-page-count" >Pages:</label>
-        <input type="number" min="1" value="${
-          books[index].pageCount
-        }" name="page-count" id="bar-page-count" required />
+        <input type="number" min="1" value="${uiController.books[index].pageCount
+      }" name="page-count" id="bar-page-count" required />
       </li>
       <li>
         <label class="fw-bold" for="bar-page-read" >Pages read:</label>
-        <input type="number" min="0" value="${
-          books[index].pageRead
-        }" name="page-read" id="bar-page-read" required />
+        <input type="number" min="0" value="${uiController.books[index].pageRead
+      }" name="page-read" id="bar-page-read" required />
       </li>
     <button class="sidebar-button button-confirm bg-secondary" id="save-changes">Save changes</button>
     <button class="sidebar-button button-cancel bg-secondary" type="button" id="delete-book">Delete book</button>
@@ -85,9 +79,9 @@ class uiController {
     const deleteBtn = document.getElementById("delete-book");
     saveChanges.addEventListener("submit", (e) => {
       e.preventDefault();
-      const data = new this.FormData(e.target);
-      this.books[data.get("index")].updateValues(data);
-      this.populateShelf();
+      const data = new FormData(e.target);
+      uiController.books[data.get("index")].updateValues(data);
+      uiController.populateShelf();
       e.target.remove();
     });
     pageRead.addEventListener("blur", (e) => {
@@ -98,8 +92,8 @@ class uiController {
       if (!confirm("Are you sure you want to delete this book?")) return;
       const index = document.getElementById("index-hidden").value;
       const sidebarForm = document.querySelector(".info-wrapper form");
-      this.books.splice(index, 1);
-      this.populateShelf();
+      uiController.books.splice(index, 1);
+      uiController.populateShelf();
       sidebarForm.remove();
     });
   }
@@ -115,21 +109,21 @@ class uiController {
       const description = document.getElementById("description").value;
       const pageCount = document.getElementById("page-count").value;
       const book = new Book(name, author, description, pageCount);
-      this.books.push(book);
-      this.populateShelf();
+      uiController.books.push(book);
+      uiController.populateShelf();
     });
     layoutBtn.addEventListener("click", () => {
       const shelf = document.querySelector(".books");
       shelf.classList.toggle("line-layout");
       shelf.classList.toggle("card-layout");
     });
-    this.populateShelf();
+    uiController.populateShelf();
   }
 
   static populateShelf() {
     const shelf = document.querySelector(".books");
     shelf.innerHTML = "";
-    this.books.forEach((book, index) => {
+    uiController.books.forEach((book, index) => {
       const bookCardTemplate = `
        <div class="image-wrapper" >
          <svg class="image image-done ${book.finished ? "" : "hidden"}">
@@ -145,17 +139,17 @@ class uiController {
        <p class="author">${book.author}</p>
        <p class="pages">${book.pageRead}/${book.pageCount}</p>
        <p class="progress">${Math.trunc(
-         (book.pageRead / book.pageCount) * 100,
-       )}%</p>`;
+        (book.pageRead / book.pageCount) * 100,
+      )}%</p>`;
 
       const bookCard = document.createElement("div");
       bookCard.classList.add("card", "bg-secondary");
       bookCard.innerHTML = bookCardTemplate;
       bookCard.setAttribute("tabindex", "0");
       bookCard.setAttribute("data-index", index);
-      bookCard.addEventListener("click", showInfo);
+      bookCard.addEventListener("click", this.showInfo);
       bookCard.addEventListener("keyup", (e) => {
-        if (e.code === "Space") showInfo(e);
+        if (e.code === "Space") this.showInfo(e);
       });
       shelf.appendChild(bookCard);
     });
